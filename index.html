@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Личный трекер просмотра аниме One Piece"
+    />
+    <title>Grand Line Log — трекер One Piece</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="Grand Line Log, на главную">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="2" />
+              <path d="M24 8v32M8 24h32M13 13l22 22M35 13 13 35" stroke="currentColor" stroke-width="1.5" />
+              <path d="m27 13 7 14-14-5 7-9Z" fill="currentColor" />
+            </svg>
+          </span>
+          <span>GRAND LINE <b>TRACKER</b></span>
+        </a>
+        <div class="topbar-status">
+          <span class="pulse" aria-hidden="true"></span>
+          <span id="statusText">журнал на борту</span>
+        </div>
+      </header>
+
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Личный судовой журнал · One Piece</p>
+          <h1>Твоя карта<br /><em>Гранд Лайн.</em></h1>
+          <p class="intro">
+            Отмечай серии, следи за арками и всегда знай, куда держать курс дальше.
+          </p>
+          <div class="hero-actions">
+            <button class="button button-primary" id="continueButton" type="button">
+              <span id="continueLabel">Начать с 1-й серии</span>
+              <span aria-hidden="true">↗</span>
+            </button>
+            <a class="text-link" href="#arcs">Все арки <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <div class="hero-art" role="img" aria-label="Корабль Thousand Sunny, корабль команды Мугивар, в море">
+          <span class="hero-caption">THOUSAND SUNNY · GRAND LINE</span>
+        </div>
+      </section>
+
+      <section class="progress-panel" aria-labelledby="progressTitle">
+        <div class="progress-intro">
+          <p class="eyebrow">Твой путь</p>
+          <h2 id="progressTitle">Пройдено <span id="watchedCount">0</span> серий</h2>
+          <p id="progressMessage">Первый шаг — поднять якорь.</p>
+        </div>
+        <div class="progress-track-wrap">
+          <div class="progress-numbers">
+            <span><b id="progressPercent">0</b>%</span>
+            <span>из <b id="totalEpisodes">1180</b></span>
+          </div>
+          <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="1180" aria-valuenow="0" aria-label="Прогресс просмотра">
+            <div class="progress-fill" id="progressFill"></div>
+            <span class="progress-ship" id="progressShip">▲</span>
+          </div>
+          <p class="progress-note" id="progressNote">Осталось открыть 1 180 новых историй.</p>
+        </div>
+        <button class="button button-outline" id="setProgressButton" type="button">Отметить до серии</button>
+      </section>
+
+      <section class="arcs-section" id="arcs" aria-labelledby="arcsTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Маршрут</p>
+            <h2 id="arcsTitle">Арки путешествия</h2>
+          </div>
+          <p class="section-caption">Выбери остров, чтобы открыть эпизоды.</p>
+        </div>
+        <div class="arc-grid" id="arcGrid"></div>
+      </section>
+
+      <section class="episodes-section" id="episodes" aria-labelledby="episodesTitle">
+        <div class="episodes-heading">
+          <div>
+            <p class="eyebrow" id="activeArcRange">1–61 серии</p>
+            <h2 id="episodesTitle">East Blue</h2>
+          </div>
+          <div class="arc-detail" id="arcDetail">0 / 61 просмотрено</div>
+        </div>
+        <div class="episodes-controls">
+          <p>Нажми на серию, чтобы отметить её просмотренной.</p>
+          <button class="reset-link" id="clearArcButton" type="button">Очистить эту арку</button>
+        </div>
+        <div class="episode-grid" id="episodeGrid" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <dialog class="progress-dialog" id="progressDialog" aria-labelledby="dialogTitle">
+      <form method="dialog" class="dialog-card" id="progressForm">
+        <button class="close-dialog" value="cancel" aria-label="Закрыть окно" type="submit">×</button>
+        <p class="eyebrow">Быстрый переход</p>
+        <h2 id="dialogTitle">До какой серии<br />ты дошёл?</h2>
+        <p>Отметим все предыдущие серии. В любой момент это можно изменить.</p>
+        <label for="episodeInput">Номер последней просмотренной серии</label>
+        <div class="input-row">
+          <input id="episodeInput" name="episode" type="number" min="0" max="1180" inputmode="numeric" placeholder="Например, 542" />
+          <button class="button button-primary" value="default" type="submit">Сохранить</button>
+        </div>
+        <button class="dialog-reset" id="resetAllButton" type="button">Сбросить весь прогресс</button>
+      </form>
+    </dialog>
+
+    <footer>
+      <span>GRAND LINE TRACKER</span>
+      <span>Твой прогресс хранится только в этом браузере.</span>
+      <span>ONE PIECE © Eiichiro Oda / Shueisha, Toei Animation · фан-проект</span>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>

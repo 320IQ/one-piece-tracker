@@ -1,2 +1,22 @@
-# one-piece-tracker
-Personal One Piece progress tracker
+# Grand Line Log
+
+Локальный трекер просмотра аниме One Piece.
+
+## Как открыть
+
+Откройте `index.html` в браузере. Установка программ и сервер не требуются.
+
+## Что умеет
+
+- отображает 1 180 вышедших серий и 12 больших арок;
+- отмечает отдельные серии или все серии до указанного номера;
+- сохраняет личный прогресс в браузере (`localStorage`);
+- адаптируется под телефон и компьютер.
+
+Данные о количестве серий и разбивке на последние арки актуализированы по официальному каталогу ONE PIECE на 3 ноября 2026 года.
+
+## Изображения
+
+Фон использует кадр с Thousand Sunny, а карточки — промо-материалы соответствующих арок. Все изображения сохранены локально в `assets/`, чтобы сайт работал без сторонних загрузок. Права на персонажей и материалы принадлежат Eiichiro Oda, Shueisha и Toei Animation; проект неофициальный и создан для личного использования.
+
+Исходники промо-материалов: Animation Digital Network (East Blue, Alabasta, Skypiea), Anime2You (Water 7, Dressrosa), TMDB (Fish-Man Island, Whole Cake, Wano), TVB (Summit War), Crunchyroll News (Egghead), Final Weapon (Elbaph), 2Game (Thriller Bark), Apple TV (Thousand Sunny).
